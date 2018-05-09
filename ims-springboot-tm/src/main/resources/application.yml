@@ -1,0 +1,40 @@
+# server config
+server:
+    contextPath: /IMSSample
+
+# debug: true
+logging:
+    level:
+#        org.springframework: DEBUG
+#        com.ibm.j2ca: TRACE
+# enable the shutdown endpoint
+endpoints:
+    shutdown:
+        enabled: true
+
+# turn security on for the shutdown endpoint
+management:
+    security:
+        enabled: true
+        roles: SUPERUSER
+        
+# security credentials for endpoint management /shutdown
+security:
+    user: 
+        name: admin
+        password: secret
+# turn security off for the rest endpoint
+    basic:
+        enabled: false
+
+# properties for the IMS managed connection factory
+imsmcf:
+    hostname: hostname
+    datastorename: IMSA
+    portnumber: 9999
+    sslenabled: false
+    username: userid
+    password: password
+    connectionpoolenabled: true
+    minconnections: 3
+    maxconnections: 10    

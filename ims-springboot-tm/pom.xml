@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>sample.ims</groupId>
+  <artifactId>springboot.inbound</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>springboot.inbound</name>
+  <url>http://maven.apache.org</url>
+
+ <parent>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-parent</artifactId>
+   <version>1.5.1.RELEASE</version>
+ </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.ims</groupId>
+      <artifactId>imsico</artifactId>
+	  <version>14.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.ims</groupId>
+      <artifactId>ccf2</artifactId>
+	  <version>14.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.ims</groupId>
+      <artifactId>marshall</artifactId>
+	  <version>14.1.4</version>
+    </dependency>
+	<dependency>
+      <groupId>javax.resource</groupId>
+      <artifactId>javax.resource-api</artifactId>
+      <version>1.7</version>
+	</dependency>
+    <dependency>
+      <groupId>com.ibm.ims</groupId>
+      <artifactId>cwybs-adapterfoundation</artifactId>
+	  <version>14.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.ims</groupId>
+      <artifactId>despi</artifactId>
+	  <version>14.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+	  <version>58.1</version>
+    </dependency>
+  </dependencies>
+</project>
