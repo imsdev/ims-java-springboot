@@ -9,7 +9,6 @@ Spring Boot is a suite of pre-configured frameworks and technologies that make i
 The sample project is a Maven project exported from Eclipse.  It contains a sample implementation of a simple pool manager and a REST microservice. The sample project 
 demonstrate how to use the Spring Boot auto-configuration feature and some Java™ helper classes to make IMS TM Resource Adapter work as if it were running in a Java EE application server.
 
-The same information in this README is also made available in the `springboot_ims_connection_pooling.pdf` file if you prefer a hard copy.
 
 ## Program flow and architecture
 ![flow_diagram](./media/springboot_ims_connpooling.jpg)
