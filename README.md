@@ -3,8 +3,8 @@
 The examples in this repository demonstrates how you can access IMS transactions or databases using Spring Boot. 
 
 * [IMS synchronous callout processing with Spring Boot](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-callout)
-* [Accessing IMS transactions using IMS TM Resource Adapter with connection pooling](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-tm):
-* JDBC access to IMS databases
+* [Accessing IMS transactions using IMS TM Resource Adapter with connection pooling](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-tm)
+* JDBC access to IMS databases <i>(coming soon)</i>
 
 ## Featured technologies
 
