@@ -1,5 +1,5 @@
 
-# Spring Boot and IMS microservices using IMS TM Resource Adapter and connection pooling
+# Accessing IMS transactions using IMS TM Resource Adapter and connection pooling in Spring Boot
 
 This example demonstrates how to use connection pooling to call IMS™ transactions as microservices by using the IMS TM resource 
 adapter in an unmanaged environment such as Spring Boot with embedded Tomcat.
