@@ -7,7 +7,7 @@ adapter in an unmanaged environment such as Spring Boot with embedded Tomcat.
 Spring Boot is a suite of pre-configured frameworks and technologies that make it easy to create a Spring web application for up and running on the Spring platform with little configuration.  
 
 The sample project is a Maven project exported from Eclipse.  It contains a sample implementation of a simple pool manager and a REST microservice. The sample project 
-demonstrate how to use the Spring Boot auto-configuration feature and some Java™ helper classes to make IMS TM Resource Adapter work as if it were running in a Java EE application server.
+demonstrates how to use the Spring Boot auto-configuration feature and some Java™ helper classes to make IMS TM Resource Adapter work as if it were running in a Java EE application server.
 
 
 ## Program flow and architecture
@@ -97,7 +97,7 @@ The latest Eclipse Development Environment (Eclipse IDE for Java Developers) ver
 it already contains Maven. Although Eclipse also works with a Java Runtime Environment, Maven builds require a Java Development Kit (or SDK version) 
 to be installed. Keep in mind that the SDK and Eclipse can be either 32-bit or 64-bit versions, but the two need to be the same version.
 
-In the workspace, create a new Maven project (archtype quickstart) and then add Spring Boot configuration to the pom.xml file. 
+In the workspace, create a new Maven project (archtype quickstart) and then add Spring Boot configuration to the `pom.xml` file. 
 Provided in this GitHub repository is a sample workspace that can be imported to get started. The required .jar files from IMS TM Resource Adapter 
 can also be added to the workspace class path without using Maven (just by manually adding it as external to the workspace class path).
 
@@ -105,14 +105,14 @@ Because there is a sample Spring application in the attached workspace that impl
 Procedure (IVP) sample phonebook transaction IVTNV, there is no detailed description on how to create a Spring Boot application in this document. 
 For more information on Spring Boot and how to get started, refer to the tutorials that are widely available on the Internet. 
 The input and output records for the IVTNV transaction used in this sample were generated with IBM® Rational® Application Developer 
-(Rational Software Architect can also be used) by using the <b>J2C</b> -&gt; <b>CICS/IMS Databinding Generator Wizard</b> (using settings codepage 1141, platform z/OS®, and compile option TRUNC(BIN)).
+(Rational Software Architect can also be used) by using the <strong>J2C</strong> -&gt; <strong>CICS/IMS Databinding Generator Wizard</strong> (using settings codepage 1141, platform z/OS®, and compile option TRUNC(BIN)).
 
 ## Implementing a simple pool manager
-The simple pool manager implemented here is a vector that stores connections that are not in use. It uses a counter as boundary and does not 
-remove unused connections, and the connections do not time out. The pool manager is basically a repository of unused connections. Due to 
+The simple pool manager implemented here is a vector that stores connections that are not in use. It uses a counter as boundary. Unused connections 
+are not removed, and the connections do not time out. The pool manager is basically a repository of unused connections. Due to 
 internal IMS TM Resource Adapter processing and callback handlers, in case a connection is closed by the application, the connection is released 
-back to the connection pool. Furthermore, since the Security subject is in case of the IMS TM Resource Adapter not bound to the actual physical c
-onnection but rather to the IMS Connection Spec, the user can be changed during getConnection: 
+back to the connection pool. Furthermore, because the Security subject, in the case of the IMS TM Resource Adapter, is not bound to the actual physical 
+connection but to the IMS Connection Spec, the user can be changed during getConnection: 
 
 ```
 //create IMS Connection Spec
@@ -123,9 +123,9 @@ ics.setUserName("ZUSER001");
 Connection conn = icf.getConnection(ics);
 ```
 
-This piece of code simply demonstrates the way the `userid` is combined with a connection. The `getConnection` call will result in calling the reserve 
-method of the pool manager implementation and returning a physical connection, and during execution, this `userid` will sent to IMS Connect in the 
-header information of the IMS request message.
+This piece of code  demonstrates the way the `userid` is combined with a connection. The `getConnection` call will result in calling the `reserve` 
+method of the pool manager implementation and returning a physical connection.  During execution, this `userid` will be sent to IMS Connect in the 
+header  of the IMS request message.
 
 ### Interface and class variable
 The connection pool (it is called PoolManagerImpl in this sample) needs to implement the  com.ibm.connector2.spi.PoolManager interface. 
@@ -184,7 +184,7 @@ public PrintWriter getLogWriter() {
 Both methods are derived from the interface.
 
 ### Implementing initialization
-The initialization method creates the vector and prepopulates the vector with the minConnections amount of physical connections to IMS Connect: 
+The initialization method creates the vector and prepopulates the vector with the `minConnections` amount of physical connections to IMS Connect: 
 
 ```
 private synchronized void initialize(ManagedConnectionFactory
@@ -205,7 +205,7 @@ private synchronized void initialize(ManagedConnectionFactory
 The totalConnections count is maintained too.
 
 ### Implementing synchronized Vector handling
-Since the connection pool is running and its methods accessed in a multithreaded environment, access to the vector needs to be synchronized.
+Since the connection pool is running and its methods are accessed in a multithreaded environment, access to the vector needs to be synchronized.
 Getting a connection from the Vector is implemented in the `getMCfromVector` method:
 
 ```
@@ -245,11 +245,11 @@ private synchronized void putMCtoVector(ManagedConnection mc) {
           connectionPool.size());
 }
 ```
-Marking the method as synchronized ensures that only one tread is executing the method at a time.
+Marking the method as synchronized ensures that only one thread is executing the method at a time.
 
 ### Implementing pool connection reserve, release, and delete methods
 
-For getting a connection from the pool, the resource adapter calls the reserve method of the PoolManager, implemented as follows: 
+For getting a connection from the pool, the resource adapter calls the `reserve` method of the PoolManager, implemented as follows: 
 ```
 public ManagedConnection reserve(ManagedConnectionFactory factory,
 		ConnectionPoolProperties poolProps, Subject arg2,
@@ -311,12 +311,12 @@ public void delete(ManagedConnection mc, Object arg1)
 ```
 
 <b>Note</b>: Because this sample pool manager implementation does not keep track of used connections, the `delete` method assumes that 
-a connection created by this pool manager instance is removed and therefor simply destroys the physical connection if not null and decrements 
+a connection created by this pool manager instance is removed and therefore simply destroys the physical connection if it is not null, and decrements 
 the totalConnections counter.
 
 
 ### Implementing pool shutdown and cleanup
-Since calling the close method on the connection causes the `release` method of the pool manager to be called, the connections would not be 
+Since calling the `close` method on the connection causes the `release` method of the pool manager to be called, the connections would not be 
 erminated gracefully without a shutdown or cleanup. In order to do a cleanup, a `stop` method was added that removes all connections from 
 the vector and physically terminates the connections to IMS Connect using the `cleanup()` and `destroy()` methods on the managed connection: 
 
@@ -365,7 +365,10 @@ mcf.setPortNumber(new Integer(1234));
 ...
 //Create connection factory from ManagedConnectionFactory
 cf = (IMSConnectionFactory) mcf.createConnectionFactory();
+```
+
 The following code adds the usage of the pool manager that was created in the implementation section: 
+```
 IMSManagedConnectionFactory mcf = new IMSManagedConnectionFactory();
 mcf.setDataStoreName("MyDSName");
 mcf.setHostName("myHostNm");
@@ -391,7 +394,7 @@ cf = (IMSConnectionFactory) mcf.createConnectionFactory(connMgr);
 ```
 
 The sample workspace contains a Java class that implements the usage of the pool manager (same package as the pool manager sample.ims.poolmanager 
-with class name StandaloneIMSCall.java).
+with class name `StandaloneIMSCall.java`).
 
 ### How to turn on logging for IMS TM Resource Adapter
 
