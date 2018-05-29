@@ -1,7 +1,7 @@
 
 # IMS synchronous callout processing with Spring Boot
 
-In this example, we will demonstrate how to process a synchronous callout from IMS using IMS TM Resource Adapter and a message-driven bean (MDB) in Spring Boot with Tomcat embedded. 
+In this example, we will demonstrate how to process a synchronous callout from IMS using the IMS TM Resource Adapter and a message-driven bean (MDB) in Spring Boot with Tomcat embedded. 
 
 Spring Boot is a suite of pre-configured frameworks and technologies that make it easy to create a Spring web application that can be up and running on the Spring platform with little configuration.
 
@@ -9,6 +9,10 @@ Samples are provided to demonstrate how to use the Spring Boot auto-configuratio
 
 
 ## Program flow and architecture
+The following diagram shows the program flow and the components involved. Note that the MDB that processes the 
+message from IMS can then call a service, local or external.  However, in this example, the MDB simply processes the 
+message from IMS. It does not call any service.
+
 ![flow_diagram](./media/springboot_imscallout.jpg)
 
 The implementation is based on the IMS documentation that describes how to implement the synchronous callout function using MDBs in a WebSphere Application Server.

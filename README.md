@@ -1,10 +1,14 @@
 # Spring Boot samples for accessing IMS TM and IMS DB 
 
-The examples in this repository demonstrate how you can access IMS transactions or databases using Spring Boot. 
+The examples in this repository demonstrate how you can access IMS transactions or databases in an unmanaged environment such as Spring Boot. 
 
-* [IMS synchronous callout processing with Spring Boot](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-callout)
-* [Accessing IMS transactions using IMS TM Resource Adapter with connection pooling](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-tm)
-* [Accessing IMS data using IMS Universal drivers](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-jdbc)
+* [IMS synchronous callout processing with Spring Boot](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-callout) <br/>
+This example demonstrates how to call IMS transactions as microservices by using the IMS TM resource adapter, 
+with connection pooling, in an un-managed environment. 
+* [Accessing IMS transactions using IMS TM Resource Adapter with connection pooling](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-tm) <br/?
+This example demonstrates how to process a synchronous callout from IMS by using the IMS TM resource adapter and a message-driven bean in Spring Boot.
+* [Accessing IMS data using IMS Universal drivers](https://github.com/imsdev/ims-java-springboot/tree/master/ims-springboot-jdbc) <br/>
+This example demonstrates how to issue SQL queries against an IMS database using the IMS Universal drivers in an unmanaged environment such as Spring Boot.
 
 ## Featured technologies
 
