@@ -80,7 +80,7 @@ The command above only runs successfully if the following conditions are met:
 <td>`ccf2.jar`</td> <td>com.ibm.ims</td> <td>ccf2</td> <td>14.1.4 </td>
 </tr>
 <tr>
-<td>`despi.jar`</td> <td>com.ibm.ims</td> <td>despi</td> <td>14.1.4</td>
+<td>`despi.jar`</td> <td>com.ibm</td> <td>despi</td> <td>14.1.4</td>
 </tr>
 <tr>
 <td>`marshall.jar`</td> <td>com.ibm.ims</td>  <td>marshall</td> <td>14.1.4</td>
